@@ -1,0 +1,6 @@
+{
+  "name": "Badminton Tactical Decision Study",
+  "description": "An interactive sports-science study application designed for badminton doubles scenarios. Watch video scenario clips and log participants trial progress.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
