@@ -22,8 +22,13 @@ export default function App() {
   // YouTube video state - persisted in localStorage so researchers can configure they own videos
   const [youtubeVideoId, setYoutubeVideoId] = useState<string>(() => {
     const saved = localStorage.getItem("badminton_study_youtube_id");
-    // Default to a high quality badminton doubles strategy/tactics rally clip
-    return saved || "P-A3Jp0Yp_4"; 
+    // Migrate old default code to the new target
+    if (saved === "P-A3Jp0Yp_4") {
+      localStorage.setItem("badminton_study_youtube_id", "oGwudAmyDt8");
+      return "oGwudAmyDt8";
+    }
+    // Default to the requested youtube video ID
+    return saved || "oGwudAmyDt8"; 
   });
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -64,7 +69,7 @@ export default function App() {
   };
 
   const handleResetSettings = () => {
-    const defaultId = "P-A3Jp0Yp_4";
+    const defaultId = "oGwudAmyDt8";
     setYoutubeVideoId(defaultId);
     setTempVideoInput(defaultId);
     localStorage.removeItem("badminton_study_youtube_id");
@@ -359,7 +364,7 @@ export default function App() {
                     type="text"
                     value={tempVideoInput}
                     onChange={(e) => setTempVideoInput(e.target.value)}
-                    placeholder="e.g. https://www.youtube.com/watch?v=P-A3Jp0Yp_4"
+                    placeholder="e.g. https://www.youtube.com/watch?v=oGwudAmyDt8"
                     className="w-full bg-slate-950 border border-slate-800 focus:border-sky-500 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none transition-all font-mono text-sm"
                   />
                 </div>
